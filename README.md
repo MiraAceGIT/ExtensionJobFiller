@@ -36,20 +36,12 @@ III Sites supportés (pour un rajout, prendre contact sur git par exemple : Mira
 Aussi : tout site avec données JSON-LD (standard Schema.org `JobPosting`)
 
 
-IV Structure (meme si un peu détaillé en entete de chaque doc)
+IV Structure
 
-
-bot-isep/
-├── manifest.json                  # Configuration de l'extension (MV3)
-├── popup/
-│   ├── popup.html                 # Interface utilisateur
-│   ├── popup.css                  # Styles
-│   └── popup.js                   # Logique du popup
-├── background/
-│   └── service_worker.js          # Orchestration (no Puccini there) + scraper injecté
-├── content_scripts/
-│   └── filler.js                  # Remplit le formulaire ISEP
-└── README.md
+- `manifest.json` — config de l'extension
+- `popup/` — interface (html, css, js)
+- `background/service_worker.js` — scrape les offres + orchestration
+- `content_scripts/filler.js` — remplit le formulaire ISEP
 
 
 V Dépannage (svp m'embetez pas mais reportez les bugs je corrige max le lendemain)
