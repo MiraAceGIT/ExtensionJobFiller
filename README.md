@@ -8,7 +8,7 @@ I Installation (utilisateur)
 1. Ouvrir Chrome sur ce site `chrome://extensions`
 2. Activer le Mode développeur (interrupteur en haut à droite)
 3. Cliquer "Charger l'extension non empaquetée"
-4. Sélectionner le dossier `bot-isep` dans l' explorateur de fichier
+4. Sélectionner le dossier `ExtensionJobFiller-main` dans l' explorateur de fichier
 5. L'icône de l'extension apparaît dans la barre d'outils
 
 

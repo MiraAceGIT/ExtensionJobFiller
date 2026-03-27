@@ -369,7 +369,7 @@
     if (d.contractType) {
       const ct = d.contractType.toLowerCase();
       const isAlternance = /alternance|alternant|apprentissage|apprenti|contrat pro|professionnalisation/.test(ct);
-      const isStage      = /stage|stagiaire|internship|intern\b/.test(ct);
+      const isStage      = /stage|stagiaire|internship/.test(ct);
 
       if (isAlternance || isStage) {
         // Strategy 1 — data-testid: radio-option-true = Alternance, radio-option-false = Stage
