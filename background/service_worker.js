@@ -132,7 +132,7 @@ function normalizeContractType(raw) {
   if (Array.isArray(raw)) raw = raw.join(' ');
   const s = (typeof raw === 'string' ? raw : String(raw || '')).toLowerCase().trim();
   if (/alternance|alternant|apprentissage|apprenti|contrat pro|professionnalisation/.test(s)) return 'Alternance';
-  if (/stage|stagiaire|internship|intern\b/.test(s)) return 'Stage';
+  if (/stage|stagiaire|internship/.test(s)) return 'Stage'; // intern seul = trop ambigu en contexte français (alternance aussi)
   if (/\bcdi\b|permanent|indéterminé/.test(s)) return 'CDI';
   if (/\bcdd\b|déterminé|fixed.term/.test(s)) return 'CDD';
   if (/freelance|indépendant|portage|consultant/.test(s)) return 'Freelance';
@@ -163,6 +163,12 @@ function scrapeJobPosting() {
     startDate:    '',
     duration:     '',
   };
+
+  // ── URL sniffing (souvent plus fiable que le JSON-LD pour le type de contrat) ──
+  if (/alternance|alternant|apprentissage|apprenti/i.test(url)) data.contractType = 'Alternance';
+  else if (/\bstage\b/i.test(url))                              data.contractType = 'Stage';
+  else if (/\bcdi\b/i.test(url))                                data.contractType = 'CDI';
+  else if (/\bcdd\b/i.test(url))                                data.contractType = 'CDD';
 
   // ── Helper ──────────────────────────────────────────────
   function text(selector, root) {
@@ -315,7 +321,7 @@ function scrapeJobPosting() {
   // (falls through to JSON-LD block below)
 
   // ── JSON-LD structured data (works on most compliant sites) ──
-  if (!data.title || !data.company) {
+  if (!data.title || !data.company || !data.contractType) {
     for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
       try {
         const items = [].concat(JSON.parse(script.textContent));
