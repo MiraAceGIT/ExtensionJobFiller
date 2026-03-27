@@ -1,0 +1,66 @@
+<!-- interface visuelle (quand cliccccc sur l'extension) -->
+<!-- ============================================================
+     Champ pour coller l'url de l'offre d'emploi
+     Bouton pour lancer le scraping et le remplissage du formulaire
+     Zone de statut pour les messages (erreur, succes ou info)
+     Liste les sites supportés tout en bas (linkedin, indeed, wttj etc)
+     ============================================================ -->
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extension Job Filler</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">ISEP</div>
+      <h1>Job Form Filler</h1>
+      <p class="subtitle">Remplissage automatique du formulaire de candidature</p>
+    </header>
+
+    <main>
+      <div class="form-group">
+        <label for="jobUrl">Lien de la fiche de poste *</label>
+        <input
+          type="url"
+          id="jobUrl"
+          placeholder="https://www.linkedin.com/jobs/view/..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span class="field-hint">Coller le lien de l'offre d'emploi</span>
+      </div>
+
+      <button id="fillBtn" class="btn-primary">
+        <span id="btnIcon">▶</span>
+        <span id="btnText">Remplir le formulaire</span>
+        <span id="btnSpinner" class="spinner hidden" aria-hidden="true"></span>
+      </button>
+
+      <div id="status" class="status hidden" role="alert"></div>
+
+      <div class="sites-info">
+        <p class="sites-title">Sites supportés</p>
+        <div class="sites-grid">
+          <span>LinkedIn</span>
+          <span>Indeed</span>
+          <span>WTTJ</span>
+          <span>HelloWork</span>
+          <span>APEC</span>
+          <span>France Travail</span>
+          <span>Cadremploi</span>
+          <span>JobTeaser</span>
+        </div> <!-- si ton site est pas là déso -->
+        <p class="sites-fallback">+ tout site avec données structurées (JSON-LD)</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

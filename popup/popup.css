@@ -1,0 +1,231 @@
+/* couleurs/tailles/ etc bref c'est le style visu du popup (pas obligatoire mais c'est moche sinon */
+/*
+ * ============================================================
+ * Style du header avec le dégradé bleu ISEP
+ * Champ url et bouton de lancement et leurs etats (focus, desactivé etc)
+ * Spinner d'attente pendant que ca scrape
+ * Couleurs des messages de statut (vert=succes, rouge=erreur, bleu=info)
+ * Grille des sites supportés tout en bas du popup
+ * ============================================================
+ */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  width: 340px;
+  background: #f4f6f9;
+  color: #2d3748;
+}
+
+.container {
+  padding: 0 0 16px 0;
+}
+
+/* ---- Header ---- */
+header {
+  background: linear-gradient(135deg, #002855, #003f8a);
+  color: white;
+  text-align: center;
+  padding: 18px 16px 14px;
+  margin-bottom: 16px;
+}
+
+.logo {
+  display: inline-block;
+  background: white;
+  color: #002855;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 2px; /* ça fait plus professionnel je jure */
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  font-size: 11px;
+  opacity: 0.8; /* un peu transparent c'est stylé */
+  margin-top: 3px;
+}
+
+/* ---- Main ---- */
+main {
+  padding: 0 16px;
+}
+
+/* ---- Form group ---- */
+.form-group {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 5px;
+}
+
+input[type="url"] {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #cbd5e0;
+  border-radius: 7px;
+  font-size: 12.5px;
+  background: white;
+  color: #2d3748;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="url"]:focus {
+  border-color: #002855;
+  box-shadow: 0 0 0 3px rgba(0, 40, 85, 0.1);
+}
+
+input[type="url"]::placeholder {
+  color: #a0aec0;
+  font-size: 11.5px;
+}
+
+.field-hint {
+  font-size: 10.5px;
+  color: #a0aec0;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ---- Button ---- */
+.btn-primary {
+  width: 100%;
+  padding: 11px 16px;
+  background: #002855;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.2px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #003f8a;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.btn-primary:disabled {
+  background: #90aabf;
+  cursor: not-allowed;
+}
+
+#btnIcon {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* ---- Spinner ---- */
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Status ---- */
+.status {
+  margin-top: 10px;
+  padding: 9px 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.status.success {
+  background: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.status.error {
+  background: #fed7d7;
+  color: #742a2a;
+  border: 1px solid #fc8181;
+}
+
+.status.info {
+  background: #bee3f8;
+  color: #2a4365;
+  border: 1px solid #90cdf4;
+}
+
+/* ---- Sites info ---- */
+.sites-info {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 7px;
+  border: 1px solid #e2e8f0;
+}
+
+.sites-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 7px;
+}
+
+.sites-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.sites-grid span {
+  font-size: 10.5px;
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 2px 7px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.sites-fallback {
+  font-size: 10px;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* ---- Utilities ---- */
+.hidden {
+  display: none !important;
+}

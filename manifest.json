@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "ISEP Job Form Filler",
+  "version": "1.0.0",
+  "description": "Remplit automatiquement le formulaire de candidature ISEP depuis une fiche de poste",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.izia-isep.com/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Extension Job Filler"
+  },
+  "background": {
+    "service_worker": "background/service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.izia-isep.com/*"],
+      "js": ["content_scripts/filler.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
